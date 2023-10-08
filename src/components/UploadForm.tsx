@@ -11,27 +11,27 @@ const UploadForm: FC = () => {
   const upload = async (ev: ChangeEvent<HTMLInputElement>) => {
     ev.preventDefault();
     const files = ev.target.files;
-    if (files && files.length > 0) {
-      const file = files[0];
-      setIsUploading(true);
+    try {
+      if (files && files.length > 0) {
+        const file = files[0];
+        setIsUploading(true);
+        const data = new FormData()
+        data.set('file', file)
 
-      const formData = new FormData();
-      formData.append("file", file);
+        const res = await fetch('/api/upload', {
+          method: 'POST',
+          body: data
+        })
+        //handle the error
+        if (!res.ok) throw new Error(await res.text())
 
-      console.log("formData in client", formData);
-
-      const res = await axios.post('/api/upload', formData, {
-        headers: {
-          "Content-Type": "multipart/form-data", // Important for handling FormData
-        },
-      });
-
-      console.log("res", res);
-
-
-      setIsUploading(false);
-      const newName = res.data.newName;
-      router.push('/' + newName);
+        const responseJson = await res.json();
+        setIsUploading(false);
+        const { newName } = responseJson;
+        router.push('/' + newName);
+      }
+    } catch (error) {
+      console.log("error", error);
     }
   };
 
