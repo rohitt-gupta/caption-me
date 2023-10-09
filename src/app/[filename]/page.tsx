@@ -1,5 +1,5 @@
 'use client'
-// import { clearTranscriptionItems } from "@/libs/awsTranscriptionHelpers";
+import { clearTranscriptionItems } from "@/libs/awsTranscriptionHelpers";
 import axios from "axios";
 import { useEffect, useState } from "react";
 // import { TranscriptionEditor } from "@/components/TranscriptionEditor";
@@ -15,7 +15,7 @@ export default function FilePage({ params }: FilePageProps) {
   const { filename } = params;
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [isFetchingInfo, setIsFetchingInfo] = useState(false);
-  const [awsTranscriptionItems, setAwsTranscriptionItems] = useState([]);
+  const [awsTranscriptionItems, setAwsTranscriptionItems] = useState<any>([]);
 
   useEffect(() => {
     getTranscription();
@@ -33,9 +33,9 @@ export default function FilePage({ params }: FilePageProps) {
       } else {
         setIsTranscribing(false);
 
-        // setAwsTranscriptionItems(
-        //   // clearTranscriptionItems(transcription.results.items)
-        // );
+        setAwsTranscriptionItems(
+          clearTranscriptionItems(transcription.results.items)
+        );
       }
     });
   }
