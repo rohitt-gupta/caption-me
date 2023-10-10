@@ -103,7 +103,7 @@ export default function ResultVideo({ filename, transcriptionItems }: { filename
                 <div className="bg-bg-gradient-from h-8"
                   style={{ width: progress * 100 + '%' }}>
                   <h3 className="text-white text-xl absolute inset-0 py-1">
-                    {progress * 100}%
+                    {(progress * 100)}%
                   </h3>
                 </div>
               </div>

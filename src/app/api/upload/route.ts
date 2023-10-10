@@ -22,8 +22,8 @@ export async function POST(request: NextRequest) {
   const s3client = new S3Client({
     region: 'ap-southeast-1',
     credentials: {
-      accessKeyId: process.env.AWS_ACCESS_KEY as string,
-      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY as string,
+      accessKeyId: process.env.AWS_ACCESS_KEY_DEMO as string,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY_DEMO as string,
     },
   });
 
@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
 
   try {
     const uploadCommand = new PutObjectCommand({
-      Bucket: process.env.BUCKET_NAME,
+      Bucket: process.env.BUCKET_NAME_DEMO,
       Body: buffer,
       ACL: 'public-read',
       ContentType: type,
