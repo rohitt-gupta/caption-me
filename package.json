@@ -11,10 +11,13 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.425.0",
     "@aws-sdk/client-transcribe": "^3.427.0",
+    "@ffmpeg/ffmpeg": "^0.12.6",
+    "@ffmpeg/util": "^0.12.1",
     "@types/formidable": "^3.4.3",
     "aws-crt": "^1.18.0",
     "axios": "^1.5.1",
     "body-parser": "^1.20.2",
+    "file-loader": "^6.2.0",
     "formidable": "^3.5.1",
     "multer": "^1.4.5-lts.1",
     "next": "13.5.4",

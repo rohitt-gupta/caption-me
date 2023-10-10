@@ -60,7 +60,7 @@ export default function FilePage({ params }: FilePageProps) {
         </div>
         <div>
           <h2 className="text-2xl mb-4 text-white/60">Result</h2>
-          <ResultVideo filename={filename} />
+          <ResultVideo filename={filename} transcriptionItems={awsTranscriptionItems} />
         </div>
       </div>
     </div>
