@@ -19,13 +19,14 @@ export default async function middleware(
 ): Promise<Response | undefined> {
 
   const ip = request.ip ?? "127.0.0.1";
-  console.log("request.ip", request.ip);
 
   const { success, pending, limit, reset, remaining } = await ratelimit.limit(
     ip
   );
 
-  console.log("ARE WE REDIS-IS?");
+  console.log("ARE WE REDIS-IN?");
+  console.log("success", success);
+
 
   return success
     ? NextResponse.next()
