@@ -29,7 +29,7 @@ export default function RootLayout({
               <Link href="/">Home</Link>
               <Link href="/pricing">Pricing</Link>
               <Link href="mailto:pta.rohit28@gmail.com">Contact</Link>
-              <Link href="mailto:pta.rohit28@gmail.com">Github</Link>
+              <Link href="https://github.com/rohitt-gupta/caption-me">Github</Link>
             </nav>
           </header>
           {children}
