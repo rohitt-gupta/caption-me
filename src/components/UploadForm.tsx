@@ -12,7 +12,11 @@ const UploadForm: FC = () => {
     ev.preventDefault();
     const files = ev.target.files;
     try {
-      if (files && files.length > 0) {
+      console.log("files", files);
+      if (files && files.length > 0 && files[0].size > 5000000) {
+        console.log("Give file less than 5 mb");
+      }
+      else if (files && files.length > 0) {
         const file = files[0];
         setIsUploading(true);
         const data = new FormData()

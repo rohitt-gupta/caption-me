@@ -23,12 +23,13 @@ export default function RootLayout({
           <header className="flex justify-between my-2 sm:my-8">
             <Link href="/" className="flex gap-1">
               <SparklesIcon />
-              <span>EpicCaptions</span>
+              <span>captionMe.</span>
             </Link>
             <nav className="flex items-center gap-2 sm:gap-6 text-white/80 text-sm sm:text-bas">
               <Link href="/">Home</Link>
               <Link href="/pricing">Pricing</Link>
-              <a href="mailto:contact@epiccaptions.com">Contact</a>
+              <Link href="mailto:pta.rohit28@gmail.com">Contact</Link>
+              <Link href="mailto:pta.rohit28@gmail.com">Github</Link>
             </nav>
           </header>
           {children}
