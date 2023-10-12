@@ -33,7 +33,7 @@ export default function FilePage({ params }: FilePageProps) {
       } else {
         setIsTranscribing(false);
         setAwsTranscriptionItems(
-          clearTranscriptionItems(transcription.results.items)
+          clearTranscriptionItems(transcription?.results?.items)
         );
       }
     });

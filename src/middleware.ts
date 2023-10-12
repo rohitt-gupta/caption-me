@@ -24,11 +24,14 @@ export default async function middleware(
   const { success, pending, limit, reset, remaining } = await ratelimit.limit(
     ip
   );
+
+  console.log("ARE WE REDIS-IS?");
+
   return success
     ? NextResponse.next()
     : NextResponse.redirect(new URL("/blocked", request.url));
 }
 
 export const config = {
-  matcher: "/",
+  matcher: "/api/upload",
 };
