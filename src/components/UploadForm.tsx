@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import React, { ChangeEvent, FC, useState } from "react";
 import axios from "axios";
 import UploadIcon from "@/components/UploadIcon";
+import { transcribeVideo } from "@/libs/aws-transcribe";
 
 const UploadForm: FC = () => {
   const [isUploading, setIsUploading] = useState(false);
@@ -10,33 +11,34 @@ const UploadForm: FC = () => {
 
   const upload = async (ev: ChangeEvent<HTMLInputElement>) => {
     ev.preventDefault();
-    const files = ev.target.files;
-    try {
-      console.log("files", files);
-      if (files && files.length > 0 && files[0].size > 5000000) {
-        console.log("Give file less than 5 mb");
-      }
-      else if (files && files.length > 0) {
-        const file = files[0];
-        setIsUploading(true);
-        const data = new FormData()
-        data.set('file', file)
+    await transcribeVideo('https://dawid-epic-captions.s3.us-east-1.amazonaws.com/with-captions.mp4')
 
-        const res = await fetch('/api/upload', {
-          method: 'POST',
-          body: data
-        })
-        //handle the error
-        if (!res.ok) throw new Error(await res.text())
+    // const files = ev.target.files;
+    // try {
+    //   if (files && files.length > 0 && files[0].size > 5000000) {
+    //     console.log("Give file less than 5 mb");
+    //   }
+    //   else if (files && files.length > 0) {
+    //     const file = files[0];
+    //     setIsUploading(true);
+    //     const data = new FormData()
+    //     data.set('file', file)
 
-        const responseJson = await res.json();
-        setIsUploading(false);
-        const { newName } = responseJson;
-        router.push('/' + newName);
-      }
-    } catch (error) {
-      console.log("error", error);
-    }
+    //     const res = await fetch('/api/upload', {
+    //       method: 'POST',
+    //       body: data
+    //     })
+    //     //handle the error
+    //     if (!res.ok) throw new Error(await res.text())
+
+    //     const responseJson = await res.json();
+    //     setIsUploading(false);
+    //     const { newName } = responseJson;
+    //     router.push('/' + newName);
+    //   }
+    // } catch (error) {
+    //   console.log("error", error);
+    // }
   };
 
   return (

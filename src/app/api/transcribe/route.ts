@@ -19,7 +19,7 @@ function createTranscriptionCommand(filename: string): StartTranscriptionJobComm
 	return new StartTranscriptionJobCommand({
 		TranscriptionJobName: filename,
 		OutputBucketName: process.env.BUCKET_NAME_DEMO as string,
-		OutputKey: filename + ".transcription",
+		// OutputKey: filename + ".transcription",
 		IdentifyLanguage: true,
 		Media: {
 			MediaFileUri: "s3://" + process.env.BUCKET_NAME_DEMO + "/" + filename,
@@ -90,7 +90,11 @@ export async function GET(req: any): Promise<any> {
 
 	// 2 find ready transcription first in the bucket
 	const transcription = await getTranscriptionFile(filename as string);
+	console.log("transcription is doen here is the file", transcription);
+
 	if (transcription) {
+		console.log();
+
 		return Response.json({
 			status: "COMPLETED",
 			transcription,
@@ -102,6 +106,8 @@ export async function GET(req: any): Promise<any> {
 
 	// if job existsreturn the status code
 	if (existingJob) {
+		console.log("esisting job,ename: ", existingJob);
+
 		return Response.json({
 			status: existingJob.TranscriptionJob.TranscriptionJobStatus,
 		});
@@ -110,6 +116,17 @@ export async function GET(req: any): Promise<any> {
 	// creating new transcription job
 	if (!existingJob) {
 		const newJob = await createTranscriptionJob(filename as string);
+		console.log("hello new job", newJob);
+
+		if (newJob.TranscriptionJob.TranscriptionJobStatus === 'COMPLETED') {
+			// The transcription is complete; you can now obtain the results.
+			const { TranscriptionFileUri } = newJob.TranscriptionJob.Transcript;
+
+			// TranscriptionFileUri will point to the SRT or JSON file.
+			console.log('TranscriptionFileUri:', TranscriptionFileUri);
+		} else {
+			console.log('Transcription job is still in progress.');
+		}
 		return Response.json({
 			status: newJob.TranscriptionJob.TranscriptionJobStatus,
 		});
