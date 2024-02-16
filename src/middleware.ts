@@ -10,7 +10,7 @@ const redis = new Redis({
 
 const ratelimit = new Ratelimit({
   redis: redis,
-  limiter: Ratelimit.slidingWindow(2, "7 d"), // 2 API calls per 7 days or per week
+  limiter: Ratelimit.slidingWindow(2, "7 d"),
 });
 
 export default async function middleware(
@@ -27,12 +27,12 @@ export default async function middleware(
   console.log("ARE WE REDIS-IN?");
   console.log("success", success);
 
-  // if success true then call next() middleware otherwise redirect to /blocked
+
   return success
     ? NextResponse.next()
     : NextResponse.redirect(new URL("/blocked", request.url));
 }
 
 export const config = {
-  matcher: "/api/transcribe",
+  matcher: "/api/upload",
 };
