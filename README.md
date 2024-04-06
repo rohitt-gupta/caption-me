@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+CaptionMe
+=========
 
-## Getting Started
+CaptionMe is a Next.js application designed to simplify the process of adding captions to videos. With a focus on ease of use, CaptionMe allows users to upload their videos and automatically generates captions, enhancing accessibility and viewer engagement.
 
-First, run the development server:
+Features
+--------
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+-   Automatic Caption Generation: Upload your video and let CaptionMe handle the rest.
+
+-   Customizable Captions: Adjust the timing and text of your captions for perfect synchronization.
+
+-   Easy to Use: A user-friendly interface ensures a smooth captioning process.
+
+-   Free and Premium Options: Choose between the free version or contact us for premium access.
+
+## Technologies Used
+
+CaptionMe leverages the following technologies:
+
+- [Next.js](https://nextjs.org/) - The React framework for production.
+
+- [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework.
+
+- [AWS S3](https://aws.amazon.com/s3/) - Object storage service.
+
+- [AWS Transcribe](https://aws.amazon.com/transcribe/) - Automatic speech recognition.
+
+- [FFmpeg](https://ffmpeg.org/) - A complete, cross-platform solution to record, convert and stream audio and video.
+
+- [Vercel](https://vercel.com/) - Platform for frontend frameworks and static sites, built to integrate with your headless content, commerce, or database.
+
+Installation
+------------
+
+To get started with CaptionMe, clone the repository and install the dependencies:
+
 ```
+git clone https://github.com/rohitt-gupta/caption-me.git
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+cd caption-me
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+npm install
+```
+Ensure you have Node.js installed on your system to proceed with the installation.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Usage
+-----
 
-## Learn More
+After installation, you can run the development server with:
 
-To learn more about Next.js, take a look at the following resources:
+npm run dev
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Navigate to 
+http://localhost:3000
+to view the application. To add captions to your video, simply upload your video file and let CaptionMe do the rest.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Contributing
+------------
 
-## Deploy on Vercel
+Contributions to CaptionMe are welcome! If you have suggestions for improvements or bug fixes, feel free to open an issue or submit a pull request. Please ensure your code adheres to the project's coding standards and include tests for new features.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Contact
+-------
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+For further questions or suggestions, please contact us at pta.rohit28@gmail.com or https://twitter.com/whyrohitwhy.
+
+Join us in making video content more accessible and engaging with CaptionMe!
