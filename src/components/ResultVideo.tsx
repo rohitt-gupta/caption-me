@@ -54,7 +54,10 @@ export default function ResultVideo({ filename, transcriptionItems }: { filename
       if (regexResult && regexResult?.[1]) {
         const howMuchIsDone = regexResult?.[1];
         const [hours, minutes, seconds] = howMuchIsDone.split(':');
-        const doneTotalSeconds = parseFloat(hours) * 3600 + parseFloat(minutes) * 60 + seconds as any;
+        const doneTotalSeconds =
+          parseFloat(hours) * 3600 +
+          parseFloat(minutes) * 60 +
+          parseFloat(seconds);
         const videoProgress = doneTotalSeconds / duration;
         setProgress(videoProgress);
       }
